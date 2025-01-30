@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Countdown Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Countdown Timer</h1>
+        <div class="timer-setup">
+            <div class="time-box">
+                <button class="btn adjust-btn" onclick="adjustTime('hours', 1)">+</button>
+                <span id="hours">00</span>
+                <button class="btn adjust-btn" onclick="adjustTime('hours', -1)">-</button>
+            </div>
+            <span class="colon">:</span>
+            <div class="time-box">
+                <button class="btn adjust-btn" onclick="adjustTime('minutes', 1)">+</button>
+                <span id="minutes">00</span>
+                <button class="btn adjust-btn" onclick="adjustTime('minutes', -1)">-</button>
+            </div>
+            <span class="colon">:</span>
+            <div class="time-box">
+                <button class="btn adjust-btn" onclick="adjustTime('seconds', 1)">+</button>
+                <span id="seconds">00</span>
+                <button class="btn adjust-btn" onclick="adjustTime('seconds', -1)">-</button>
+            </div>
+        </div>
+        <div class="controls">
+            <button class="btn start-btn" onclick="startTimer()">Start</button>
+            <button class="btn stop-btn" onclick="stopTimer()">Stop</button>
+            <button class="btn reset-btn" onclick="resetTimer()">Reset</button>
+        </div>
+    </div>
+
+    <div class="fullscreen-timer" id="fullscreen">
+        <div class="countdown-display" id="countdown">00:00:00</div>
+    </div>
+
+    <div class="time-up-screen" id="timeUpScreen">
+        <h1 class="time-up-text">TIME'S UP!</h1>
+        <button class="btn home-btn" onclick="returnHome()">Home</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+  </html>
+  
