@@ -60,6 +60,7 @@ span {
     box-shadow: 0 0 10px #8a2be2, 0 0 20px #9400d3;
 }
 
+/* FULLSCREEN TIMER */
 .fullscreen-timer {
     position: fixed;
     top: 0;
@@ -68,6 +69,7 @@ span {
     height: 100vh;
     background: radial-gradient(circle, rgba(50,0,80,1) 0%, rgba(0,0,0,1) 100%);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     visibility: hidden;
@@ -94,6 +96,25 @@ span {
     100% {
         text-shadow: 0 0 30px #8a2be2, 0 0 60px #9400d3;
     }
+}
+
+/* FULLSCREEN TOGGLE BUTTON */
+.fullscreen-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+.fullscreen-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
 }
 
 /* TIME'S UP SCREEN */
@@ -143,4 +164,4 @@ span {
 .home-btn:hover {
     background: red;
     box-shadow: 0 0 15px red, 0 0 30px darkred;
-  }
+}
