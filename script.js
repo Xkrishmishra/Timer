@@ -24,6 +24,7 @@ function startTimer() {
     totalSeconds = hours * 3600 + minutes * 60 + seconds;
     if (totalSeconds <= 0) return;
 
+    enterFullScreen();
     document.getElementById('fullscreen').classList.add('active');
     document.getElementById('countdown').textContent = formatTime(totalSeconds);
 
@@ -51,6 +52,7 @@ function resetTimer() {
     seconds = 0;
     updateDisplay();
     document.getElementById('fullscreen').classList.remove('active');
+    exitFullScreen();
 }
 
 function showTimeUpScreen() {
@@ -64,6 +66,7 @@ function returnHome() {
     resetTimer();
     alarm.pause();
     alarm.currentTime = 0;
+    exitFullScreen();
 }
 
 function formatTime(totalSeconds) {
@@ -71,6 +74,32 @@ function formatTime(totalSeconds) {
     let m = Math.floor((totalSeconds % 3600) / 60);
     let s = totalSeconds % 60;
     return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+}
+
+// Fullscreen Functions
+function enterFullScreen() {
+    let elem = document.documentElement; // Makes entire page go full-screen
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { // Firefox
+        elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, Opera
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { // IE/Edge
+        elem.msRequestFullscreen();
+    }
+}
+
+function exitFullScreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) { // Firefox
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { // IE/Edge
+        document.msExitFullscreen();
+    }
 }
 
 updateDisplay();
