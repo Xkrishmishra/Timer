@@ -2,6 +2,7 @@ let hours = 0, minutes = 0, seconds = 0;
 let totalSeconds = 0;
 let timer;
 let isRunning = false;
+let alarm = document.getElementById('alarmSound');
 
 function adjustTime(unit, amount) {
     if (unit === 'hours') hours = Math.max(0, hours + amount);
@@ -55,11 +56,14 @@ function resetTimer() {
 function showTimeUpScreen() {
     document.getElementById('fullscreen').classList.remove('active');
     document.getElementById('timeUpScreen').classList.add('active');
+    alarm.play();
 }
 
 function returnHome() {
     document.getElementById('timeUpScreen').classList.remove('active');
     resetTimer();
+    alarm.pause();
+    alarm.currentTime = 0;
 }
 
 function formatTime(totalSeconds) {
