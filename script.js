@@ -3,6 +3,7 @@ let totalSeconds = 0;
 let timer;
 let isRunning = false;
 let alarm = document.getElementById('alarmSound');
+let fullscreenButton = document.getElementById('fullscreenButton');
 
 function adjustTime(unit, amount) {
     if (unit === 'hours') hours = Math.max(0, hours + amount);
@@ -24,7 +25,6 @@ function startTimer() {
     totalSeconds = hours * 3600 + minutes * 60 + seconds;
     if (totalSeconds <= 0) return;
 
-    enterFullScreen();
     document.getElementById('fullscreen').classList.add('active');
     document.getElementById('countdown').textContent = formatTime(totalSeconds);
 
@@ -76,9 +76,19 @@ function formatTime(totalSeconds) {
     return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
 }
 
-// Fullscreen Functions
+// Fullscreen Toggle
+function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+        enterFullScreen();
+        fullscreenButton.textContent = "Exit Fullscreen";
+    } else {
+        exitFullScreen();
+        fullscreenButton.textContent = "Go Fullscreen";
+    }
+}
+
 function enterFullScreen() {
-    let elem = document.documentElement; // Makes entire page go full-screen
+    let elem = document.documentElement; // Fullscreen for entire page
     if (elem.requestFullscreen) {
         elem.requestFullscreen();
     } else if (elem.mozRequestFullScreen) { // Firefox
